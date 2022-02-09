@@ -1,0 +1,28 @@
+        -:    0:Source:stack.c
+        -:    0:Graph:stack.gcno
+        -:    0:Data:stack.gcda
+        -:    0:Runs:1
+        -:    1:#include "stack.h"
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stddef.h>
+        -:    4:
+        1:    5:stack * create_stack(int size)
+        -:    6:{ 
+        1:    7:	stack * s = (stack *)malloc(sizeof(stack));
+        -:    8:	if (s == NULL) {}
+        1:    9:	s->arr = (int*)malloc(size*sizeof(int));
+        1:   10:	if(s->arr == NULL){}
+        1:   11:	s->size = size;
+        1:   12:	s->crt = 0;
+        1:   13:	return s;
+        -:   14:}
+        1:   15:void remove_stack(stack * s){
+        1:   16:	free(s->arr);
+        1:   17:	free(s);
+        1:   18:}
+       10:   19:int pop(stack *s){
+       10:   20:return(s->arr[--s->crt]);
+        -:   21:}
+       10:   22:void push(stack *s, int val){
+       10:   23:s->arr[s->crt++] = val;
+       10:   24:}
